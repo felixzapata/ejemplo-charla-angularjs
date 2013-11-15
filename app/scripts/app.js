@@ -3,9 +3,6 @@
     'use strict';
 
     angular.module('example1App', [
-        'ngCookies',
-        'ngResource',
-        'ngSanitize',
         'ngRoute'
     ])
         .config(function($routeProvider) {
