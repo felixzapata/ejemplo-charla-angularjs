@@ -12,14 +12,7 @@
             $routeProvider
                 .when('/', {
                     templateUrl: 'views/main.html',
-                    controller: 'MainCtrl',
-                    resolve: {
-                        resolvedVal: function(httpService) {
-                            httpService.getCoordinates().then(function(data) {
-                                return data;
-                            });
-                        }
-                    }
+                    controller: 'MainCtrl'
                 })
                 .otherwise({
                     redirectTo: '/'

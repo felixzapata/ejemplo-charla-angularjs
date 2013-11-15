@@ -15,7 +15,10 @@
                         coordinates: '=httpCoordinates'
                     },
                     link: function (scope) {
-                        console.log('aba ' + scope.coordinates);
+                        scope.$watch('coordinates', function(newValue){
+                            scope.coordinates = newValue;
+                        });
+                        
                     }
                 };
             }

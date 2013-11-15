@@ -8,19 +8,11 @@
                 function getCoordinates() {
 
                     var deferred = $q.defer();
-
-                    $http({
-                        method: 'GET',
-                        url: '/mocks/data.json'
-                    }).
-                    success(function(data) {
+                    $http.get('mocks/data.json').success(function(data) {
                         deferred.resolve(data);
-                    }).
-                    error(function() {
+                    }).error(function() {
                         deferred.reject();
                     });
-
-
                     return deferred.promise;
 
                 }
