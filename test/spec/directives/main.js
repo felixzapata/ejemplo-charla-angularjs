@@ -34,7 +34,7 @@
         beforeEach(inject(function($injector) {
             scope = $injector('$rootScope');
             compile = $injector('$compile');
-            element = compile('<coordinates http-coordinates="myCoordinates"></coordinates>')(scope);
+            element = compile('<my-coordinates http-coordinates="myCoordinates"></my-coordinates>')(scope);
             scope.myCoordinates = fakeData;
             scope.$digest();
         }));

@@ -4,7 +4,7 @@
     'use strict';
 
     angular.module('example1App')
-        .directive('coordinates',
+        .directive('myCoordinates',
             function() {
 
                 return {
