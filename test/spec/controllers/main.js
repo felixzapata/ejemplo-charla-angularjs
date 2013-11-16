@@ -4,11 +4,10 @@
 
     describe('Controller: MainCtrl', function() {
 
-        // load the controller's module
-        beforeEach(module('example1App'));
-
         var MainCtrl,
             scope,
+            httpService,
+            q,
             fakeData = [{
                 'id': 'DGT7',
                 'latitude': 41.4326716,
@@ -31,16 +30,34 @@
                 'longitude': -3.8704629
             }];
 
+        function httpServiceMock() {
+            return {
+                getCoordinates: function() {
+                    var deferred = q.defer();
+                    deferred.resolve(fakeData);
+                    return deferred.promise;
+                }
+            };
+        }
+
+
+
+        beforeEach(module('my.app'));
+
         // Initialize the controller and a mock scope
-        beforeEach(inject(function($controller, $rootScope) {
+        beforeEach(inject(function($controller, $rootScope, $injector) {
+            httpService = httpServiceMock();
             scope = $rootScope.$new();
+            q = $injector.get('$q');
             MainCtrl = $controller('MainCtrl', {
-                $scope: fakeData
+                $scope: scope,
+                'httpService': httpService
             });
+            scope.$digest();
         }));
 
         it('should attach a list of data to the scope', function() {
-            expect(scope.fakeData.length).toBe(5);
+            expect(scope.myCoordinates).toEqual(fakeData);
         });
     });
 }());
