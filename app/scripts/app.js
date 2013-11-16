@@ -3,10 +3,12 @@
     'use strict';
 
     var moduleDependencies = [
-        'ngRoute'
+        'ngRoute',
+        'dir.my.coordinates',
+        'srv.my.coordinates'
     ];
 
-    angular.module('example1App', moduleDependencies)
+    angular.module('my.app', moduleDependencies)
         .config(function($routeProvider) {
             $routeProvider
                 .when('/', {

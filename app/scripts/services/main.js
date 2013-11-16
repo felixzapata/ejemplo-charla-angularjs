@@ -1,7 +1,7 @@
 /*global angular*/
 (function(angular) {
     'use strict';
-    angular.module('example1App')
+    angular.module('srv.my.coordinates', [])
         .factory('httpService', ['$http', '$q',
             function($http, $q) {
 

@@ -3,7 +3,7 @@
 	
     'use strict';
 
-    angular.module('example1App')
+    angular.module('my.app')
         .controller('MainCtrl', ['$scope', 'httpService',
             function($scope, httpService) {
                 httpService.getCoordinates().then(function(data) {
