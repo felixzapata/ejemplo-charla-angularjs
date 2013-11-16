@@ -42,7 +42,7 @@
 
 
 
-        beforeEach(module('my.app'));
+        beforeEach(module('ctrl.my.coordinates'));
 
         // Initialize the controller and a mock scope
         beforeEach(inject(function($controller, $rootScope, $injector) {

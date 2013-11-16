@@ -4,6 +4,7 @@
 
     var moduleDependencies = [
         'ngRoute',
+        'ctrl.my.coordinates',
         'dir.my.coordinates',
         'srv.my.coordinates'
     ];
