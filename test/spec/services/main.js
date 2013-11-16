@@ -1,25 +1,53 @@
-/*global module, inject, describe, beforeEach, it, expect*/
+/*global module, inject, describe, beforeEach, it, expect, afterEach*/
 (function() {
     'use strict';
 
     describe('Service: httpService', function() {
 
-        // load the controller's module
-        beforeEach(module('example1App'));
+        var httpService,
+            $httpBackend,
+            fakeData = [{
+                'id': 'DGT7',
+                'latitude': 41.4326716,
+                'longitude': -4.6636227
+            }, {
+                'id': 'DGT7',
+                'latitude': 42.5506176,
+                'longitude': -3.3212603
+            }, {
+                'id': 'DGT1',
+                'latitude': 40.4671642,
+                'longitude': -3.8704629
+            }, {
+                'id': 'DGT1',
+                'latitude': 40.4671642,
+                'longitude': -3.8704629
+            }, {
+                'id': 'DGT2',
+                'latitude': 40.4671642,
+                'longitude': -3.8704629
+            }];
 
-        var MainCtrl,
-            scope;
+        beforeEach(module('srv.my.coordinates'));
 
         // Initialize the controller and a mock scope
-        beforeEach(inject(function($controller, $rootScope) {
-            scope = $rootScope.$new();
-            MainCtrl = $controller('MainCtrl', {
-                $scope: scope
-            });
+        beforeEach(inject(function($injector) {
+            httpService = $injector.get('httpService');
+            $httpBackend = $injector.get('$httpBackend');
+            $httpBackend.when('GET', 'mocks/data.json').respond(fakeData);
         }));
 
-        it('should attach a list of awesomeThings to the scope', function() {
-            
+        it('should get data from a json', function() {
+            var result;
+            httpService.getCoordinates().then(function(data) {
+                result = data;
+                expect(result).toEqual(fakeData);
+            });
+            $httpBackend.flush();
+        });
+        afterEach(function() {
+            $httpBackend.verifyNoOutstandingExpectation();
+            $httpBackend.verifyNoOutstandingRequest();
         });
     });
 }());
