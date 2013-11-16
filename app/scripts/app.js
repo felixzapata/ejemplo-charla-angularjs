@@ -2,9 +2,11 @@
 (function(angular) {
     'use strict';
 
-    angular.module('example1App', [
+    var moduleDependencies = [
         'ngRoute'
-    ])
+    ];
+
+    angular.module('example1App', moduleDependencies)
         .config(function($routeProvider) {
             $routeProvider
                 .when('/', {
