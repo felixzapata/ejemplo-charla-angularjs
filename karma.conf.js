@@ -23,6 +23,15 @@ module.exports = function(config) {
             'app/views/*.html',
         ],
 
+        // generate js files from html templates
+        preprocessors: {
+            'app/views/*.html': ['ng-html2js']
+        },
+
+        ngHtml2JsPreprocessor: {
+            stripPrefix: 'app/'
+        },
+
         // list of files / patterns to exclude
         exclude: [],
 
